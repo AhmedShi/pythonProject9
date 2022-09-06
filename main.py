@@ -2,6 +2,10 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 import plotly.express as px
+import scipy.integrate as SI
+from scipy import integrate
+import scipy as sp
+from matplotlib import pyplot as plt
 import numpy as np
 import plotly.figure_factory as ff
 
@@ -197,8 +201,11 @@ else:
         columns = st.multiselect(
             label='Choose variable(s) you want to display', options=L
         )
-        if columns == [] or  Year == []:
-            print("error")
+        if columns == [] or Year == []:
+            x = np.arange(0,3*np.pi, 0.01)
+            y = np.cos(x)
+            plt.plot(x, y)
+            plt.show()
         else:
             W = []
             R = []
