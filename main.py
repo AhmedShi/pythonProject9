@@ -2,8 +2,6 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 import plotly.express as px
-import scipy as sp
-from scipy import integrate
 
 from matplotlib import pyplot as plt
 import numpy as np
