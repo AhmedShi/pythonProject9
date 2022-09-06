@@ -197,17 +197,27 @@ else:
         columns = st.multiselect(
             label='Choose variable(s) you want to display', options=L
         )
-        fig_1 = go.Figure()
-        hist_data = []
-        group_labels = []
-        bin_size = []
-        for e in columns:
-            for f in Year :
-                data_100 = Total_Pool_selection[Total_Pool_selection['Year'] == f]
-                hist_data.append(np.array(data_100[e].values.tolist()))
-                group_labels.append('Variable = ' + str(e) + ' / Year = ' + str(f))
-        for i in range(len(group_labels)):
-            bin_size.append(9700)
-        fig = ff.create_distplot(hist_data, group_labels, bin_size)
-        st.plotly_chart(fig, use_container_width=True)
+        if columns == [] or  Year == []:
+            print("error")
+        else:
+            W = []
+            R = []
+            Z = []
+            for e in columns:
+                for f in Year:
+                    data_100 = Total_Pool_selection[Total_Pool_selection['Year'] == f]
+                    W.append(data_100[e].values.tolist())
+                    R.append('Variable = ' + str(e) + ' / Year = ' + str(f))
+            for i in range(len(R)):
+                Z.append(9700)
+            fig = go.Figure()
+            fig = ff.create_distplot(hist_data=W, group_labels=R, bin_size=Z)
+            st.plotly_chart(fig, use_container_width=True)
+
+
+
+
+
+
+
 
